@@ -9,7 +9,6 @@ import edu.uw.yuanruizhang.fetchdisplay.model.Employee
 
 import edu.uw.yuanruizhang.fetchdisplay.adapter.EmpListAdapter
 import edu.uw.yuanruizhang.fetchdisplay.databinding.ActivityEmpListBinding
-import edu.uw.yuanruizhang.fetchdisplay.repository.DataRepository
 import kotlinx.coroutines.launch
 
 
@@ -29,31 +28,44 @@ class EmpListActivity : AppCompatActivity() {
         with(binding) {
             employees = listOf()
             adapter = EmpListAdapter(employees)
-            loadSongList()
+            loadEmpList(0)
             //Set Adapter to Recycler View with data
             rvEmps.adapter = adapter
 
-            //refresh features
-            btnRefresh.setOnClickListener { loadSongList() }
+            //Show Selected Group
+            btnNum1.setOnClickListener { loadEmpList(1) }
+            //Show Selected Group
+            btnNum2.setOnClickListener { loadEmpList(2) }
+            //Show Selected Group
+            btnNum3.setOnClickListener { loadEmpList(3) }
+            //Show Selected Group
+            btnNum4.setOnClickListener { loadEmpList(4) }
+
+            //Refresh
             pullDownContainer.setOnRefreshListener {
-                loadSongList()
+                loadEmpList(0)
                 pullDownContainer.isRefreshing = false
             }
 
         }
     }
 
-    private fun loadSongList() {
+    private fun loadEmpList(num:Int) {
         lifecycleScope.launch {
             runCatching {
                 Toast.makeText(this@EmpListActivity, "loading...", Toast.LENGTH_SHORT).show()
                 employees = dataRepository.getEmps()
-                adapter.updateSongs(employees)
+                employees = employees.filterNot { it.name.isNullOrEmpty() }
+                if(num > 0){
+                    employees = employees.filter { it.listId == num }
+                }
+                employees = employees.sortedWith(compareBy<Employee> { it.listId }.thenBy { it.name })
+                adapter.updateEmps(employees)
+
             }.onFailure {
                 Toast.makeText(this@EmpListActivity, "Error occurred when fetching employee data", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }
 

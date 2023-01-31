@@ -15,13 +15,8 @@ class DataRepository {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(EmpService::class.java)
-    suspend fun getEmps(): List<Employee> {
-        var res = EmpService.getEmps()
-        res = res
-            .filterNot { it.name.isNullOrEmpty() }
-            .sortedWith(compareBy<Employee> { it.listId }.thenBy { it.name })
-        return res
-    }
+    suspend fun getEmps(): List<Employee>  = EmpService.getEmps()
+
 }
 
 interface EmpService {

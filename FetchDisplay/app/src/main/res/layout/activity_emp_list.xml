@@ -12,30 +12,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <!-- a recycle view basics based on item_song-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvEmps"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/activity_emp"
-        />
+        <!-- a recycle view basics based on emp-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEmps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/activity_emp"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnRefresh"
+            android:id="@+id/btnNum4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_refresh"
+            app:srcCompat="@drawable/num_4"
+            app:tint="@android:color/white"
+            app:maxImageSize="@dimen/NumImgSize"
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
             />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnNum3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/num_3"
+            app:tint="@android:color/white"
+            app:maxImageSize="@dimen/NumImgSize"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/btnNum4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnNum2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/num_2"
+            app:tint="@android:color/white"
+            app:maxImageSize="@dimen/NumImgSize"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/btnNum3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnNum1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/num_1"
+            app:tint="@android:color/white"
+            app:maxImageSize="@dimen/NumImgSize"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/btnNum2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
